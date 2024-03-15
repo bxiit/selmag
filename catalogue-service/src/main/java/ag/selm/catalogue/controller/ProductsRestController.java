@@ -25,7 +25,7 @@ public class ProductsRestController {
 
     @GetMapping
     public Iterable<Product> findProducts(@RequestParam(name = "filter", required = false) String filter) {
-        log.warn("Filter " + filter);
+        log.info("Order submitted {}", filter);
         return this.productService.findAllProducts(filter);
     }
 
