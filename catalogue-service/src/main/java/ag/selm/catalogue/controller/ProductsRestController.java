@@ -5,6 +5,7 @@ import ag.selm.catalogue.entity.Product;
 import ag.selm.catalogue.service.ProductService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
@@ -14,6 +15,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.util.List;
 import java.util.Map;
 
+@Slf4j
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("catalogue-api/products")
@@ -22,8 +24,9 @@ public class ProductsRestController {
     private final ProductService productService;
 
     @GetMapping
-    public List<Product> findProducts() {
-        return this.productService.findAllProducts();
+    public Iterable<Product> findProducts(@RequestParam(name = "filter", required = false) String filter) {
+        log.warn("Filter " + filter);
+        return this.productService.findAllProducts(filter);
     }
 
     @PostMapping

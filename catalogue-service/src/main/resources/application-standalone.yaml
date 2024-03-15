@@ -1,2 +1,17 @@
 server:
   port: 8081
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5440/catalogue
+    username: bxit
+    password: aa
+  flyway:
+    schemas:
+      - public
+      - catalogue
+  jpa:
+    show-sql: true
+logging:
+  level:
+    sql: info
