@@ -15,7 +15,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.util.List;
 import java.util.Map;
 
-@Slf4j
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("catalogue-api/products")
@@ -25,7 +24,6 @@ public class ProductsRestController {
 
     @GetMapping
     public Iterable<Product> findProducts(@RequestParam(name = "filter", required = false) String filter) {
-        log.info("Order submitted {}", filter);
         return this.productService.findAllProducts(filter);
     }
 

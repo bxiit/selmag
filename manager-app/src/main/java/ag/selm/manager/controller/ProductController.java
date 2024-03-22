@@ -8,10 +8,13 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.Locale;
 import java.util.NoSuchElementException;
 
@@ -31,7 +34,10 @@ public class ProductController {
     }
 
     @GetMapping
-    public String getProduct() {
+    public String getProduct(@AuthenticationPrincipal UserDetails userDetails) {
+        System.out.println("userDetails.getAuthorities() = " + userDetails.getAuthorities());
+        System.out.println("userDetails.getUsername() = " + userDetails.getUsername());
+        System.out.println("userDetails.getPassword() = " + userDetails.getPassword());
         return "catalogue/products/product";
     }
 
