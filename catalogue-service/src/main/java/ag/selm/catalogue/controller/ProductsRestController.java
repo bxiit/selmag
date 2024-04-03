@@ -5,7 +5,7 @@ import ag.selm.catalogue.entity.Product;
 import ag.selm.catalogue.service.ProductService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.validation.BindException;
@@ -18,6 +18,7 @@ import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
+@Slf4j
 @RequestMapping("catalogue-api/products")
 public class ProductsRestController {
 
@@ -26,7 +27,7 @@ public class ProductsRestController {
     @GetMapping
     public Iterable<Product> findProducts(@RequestParam(name = "filter", required = false) String filter,
                                           Principal principal) {
-        LoggerFactory.getLogger(ProductsRestController.class).info("Email {}", ((JwtAuthenticationToken)principal)
+        log.info("Email {}", ((JwtAuthenticationToken)principal)
                 .getToken().getClaimAsString("email"));
         return this.productService.findAllProducts(filter);
     }

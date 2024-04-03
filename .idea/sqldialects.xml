@@ -3,6 +3,7 @@
   <component name="SqlDialectMappings">
     <file url="file://$PROJECT_DIR$/catalogue-service/src/main/java/ag/selm/catalogue/repository/ProductRepository.java" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/catalogue-service/src/main/resources/db/migration/V24_1_1__Basic_schema.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/catalogue-service/src/test/resources/ag/selm/catalogue/sql/products.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/manager-app/src/main/resources/db/migration/V24_1_1__Basic_schema.sql" dialect="PostgreSQL" />
   </component>
 </project>

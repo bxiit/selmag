@@ -40,12 +40,12 @@ public class SecurityBeans {
             List<GrantedAuthority> authorities =
                     // объединение прав с spring security и keycloak
                     Stream.concat(oidcUser.getAuthorities().stream(), Optional.ofNullable(oidcUser.getClaimAsStringList("groups"))
-                    .orElseGet(List::of)
-                    .stream()
-                    .filter(role -> role.startsWith("ROLE_"))
-                    .map(SimpleGrantedAuthority::new)
-                    .map(GrantedAuthority.class::cast))
-                    .toList();
+                                    .orElseGet(List::of)
+                                    .stream()
+                                    .filter(role -> role.startsWith("ROLE_"))
+                                    .map(SimpleGrantedAuthority::new)
+                                    .map(GrantedAuthority.class::cast))
+                            .toList();
 
             return new DefaultOidcUser(authorities, oidcUser.getIdToken(), oidcUser.getUserInfo());
         };

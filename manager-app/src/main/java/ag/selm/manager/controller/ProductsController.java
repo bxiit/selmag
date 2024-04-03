@@ -4,7 +4,9 @@ import ag.selm.manager.client.BadRequestException;
 import ag.selm.manager.client.ProductsRestClient;
 import ag.selm.manager.controller.payload.NewProductPayload;
 import ag.selm.manager.entity.Product;
+
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
